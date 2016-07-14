@@ -1,0 +1,10 @@
+%h3 Registered Applications
+
+- if @registered_applications.any?
+	- @registered_applications.each do |reg_app|
+		= link_to reg_app.name, reg_app
+		%br
+- else
+	%h6 You currently do not have any registered applications.
+
+= button_to "Register Application", new_registered_application_path, method: :get, class: "btn"

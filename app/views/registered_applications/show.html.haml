@@ -1,0 +1,7 @@
+%h4 #{@registered_application.name}
+
+%h6 #{@registered_application.url}
+
+= button_to "Unregister Application", @registered_application, method: :delete, class: "btn btn-danger"
+
+= button_to "View All", registered_applications_path, method: :get, class: "btn"
