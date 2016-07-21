@@ -1,0 +1,18 @@
+= form_for @registered_application do |f|
+	- if @registered_application.errors.any?
+		.alert.alert-danger
+			%h5
+				#{pluralize(@registered_application.errors.count, "error")}:
+				%ul
+					- @registered_application.errors.full_messages.each do |msg|
+						%li= msg
+
+	= form_group_tag(@registered_application.errors[:name]) do
+		= f.label :name
+		= f.text_field :name, placeholder: "Application Name", class: "form-control"
+
+	= form_group_tag(@registered_application.errors[:url]) do
+		= f.label :url
+		= f.text_field :url, placeholder: "URL", class: "form-control"
+
+	= f.submit "Save", class: "btn btn-success"
