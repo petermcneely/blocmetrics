@@ -9,6 +9,7 @@ class RegisteredApplicationsController < ApplicationController
 	# The registered application retrieved by its id.
 	def show
 		@registered_application = get_registered_application
+		@events = @registered_application.events.group_by(&:name)
 	end
 
 	# A new application to register under the current user.
