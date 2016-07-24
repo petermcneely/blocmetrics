@@ -2,7 +2,9 @@ class RegisteredApplication < ActiveRecord::Base
 	belongs_to :user
 	has_many :events
 
-	validates_presence_of :name, :url, :user
+	validate :name, presence: true, uniqueness: true
+	validate :url, presence: true, uniqueness: true
+	validate :user, presence: true
 
 	scope :belonging_to, -> (user) { where(user: user)}
 end
