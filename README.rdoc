@@ -1,28 +1,22 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To utilize the blocmetrics event tracking in your registered rails application, place the following Javascript in the application's app/assets/javascripts/application.js file:
 
-Things you may want to cover:
+```
+var blocmetrics = {};
 
-* Ruby version
+blocmetrics.report = function(eventName)
+{
+	var event = {event: {name: eventName}};
 
-* System dependencies
+	var request = new XMLHttpRequest();
 
-* Configuration
+	request.open("POST", "https://bk-blocmetrics.herokuapp.com/api/events", true);
 
-* Database creation
+	request.setRequestHeader('Content-Type', 'application/json');
 
-* Database initialization
+	request.send(JSON.stringify(event));
+};
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+And then call `blocmetrics.report` with your event name in the appropriate html file(s).
