@@ -22,23 +22,12 @@ class RegisteredApplicationsController < ApplicationController
 		@registered_application = RegisteredApplication.new(registered_application_params)
 		@registered_application.user = current_user
 
-		begin
-			if @registered_application.save
-				flash[:notice] = "Application successfully registered."
-				redirect_to @registered_application
-			else
-				flash[:alert] = "Unable to register application. Please try again."
-				render :new 
-			end
-		rescue ActiveRecord::RecordNotUnique => error
-			if /registered_applications.name/.match(error.message)
-				@registered_application.errors[:name] << "already taken."
-			elsif /registered_applications.url/.match(error.message)
-				@registered_application.errors[:url] << "already registered."
-			else
-				@registered_application.errors[:base] << error.message
-			end
-			render :new
+		if @registered_application.save
+			flash[:notice] = "Application successfully registered."
+			redirect_to @registered_application
+		else
+			flash[:alert] = "Unable to register application. Please try again."
+			render :new 
 		end
 	end
 
