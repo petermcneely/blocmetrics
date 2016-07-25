@@ -33,6 +33,8 @@ gem 'figaro'
 gem 'pry'
 gem 'haml'
 gem 'devise'
+gem 'chartkick' #for charts
+gem 'groupdate' #for line charts
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

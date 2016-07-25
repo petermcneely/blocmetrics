@@ -2,9 +2,12 @@
 
 %h6 #{@registered_application.url}
 
-%ul
-- @events.each do |event|
-	%li #{event[0]}, #{event[1].count}	
+.row
+	.col-md-6
+		= pie_chart @registered_application.events.group(:name).count
+
+	.col-md-6
+		= line_chart @registered_application.events.group_by_day(:created_at).count
 
 = button_to "Unregister Application", @registered_application, method: :delete, class: "btn btn-danger"
 
