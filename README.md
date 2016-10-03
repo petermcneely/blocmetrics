@@ -1,4 +1,6 @@
-== README
+# blocmetrics
+
+An analytics service and reporting tool that can be used with web apps to track user activity. Register your rails application to be consumed at https://bk-blocmetrics.herokuapp.com
 
 To utilize the blocmetrics event tracking in your registered rails application, place the following Javascript in the application's app/assets/javascripts/application.js file:
 
